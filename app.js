@@ -1,5 +1,6 @@
 //app.js
 App({
+  //onLaunch,onShow: options(path,query,scene,shareTicket,referrerInfo(appId,extraData))
   onLaunch: function () {
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
@@ -32,8 +33,20 @@ App({
         }
       }
     })
+
+  },
+  onShow: function () { },
+  onHide: function () {
+
+  },
+  onError: function (msg) {
+
+  },
+  //options(path,query,isEntryPage)
+  onPageNotFound: function (options) {
+
   },
   globalData: {
-    userInfo: null
+    girl: "史莱姆大人"
   }
 })

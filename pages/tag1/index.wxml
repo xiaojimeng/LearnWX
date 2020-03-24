@@ -1,0 +1,24 @@
+<!--pages/tag1/index.wxml-->
+
+<!-- 改变data里面的数据：this.setData({数据名：newvalue}) 
+     使用data里面的数据： this.data.数据名
+     
+     -->
+<view>小程序的体验</view>
+<view>Hello {{name}}</view>
+<view wx:for="{{students}}" wx:key="{{id}}">{{item.name}}--{{item.age}}</view>
+<view>
+当前计数：{{counter}}
+</view>
+<button size='mini' bindtap="add">+</button>
+<button size='mini' bindtap="reduce">-</button>
+<button  open-type="getUserInfo" bindgetuserinfo="handleGetUserInfo">
+     获取授权
+</button>
+<!--下面这种只能 展示用户信息 -->
+<open-data type="userNickName"></open-data>
+  <open-data type="userAvatarUrl"></open-data>
+<view wx:for="{{list}}">
+     {{item.title}}
+</view>
+  
