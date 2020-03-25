@@ -1,13 +1,86 @@
 <!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-  </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
+<!-- text
+* 相当于是span元素
+* text里面的文字默认是不能选中的，selectable或 selectable="{{true}}" 
+* space 决定文本空格大小 (可选值：nbsp/ensp/emsp)
+* decode 是否解码文本 (true/false)
+ -->
+<text>我相当于是span元素</text>
+<text>我相当于是span元素</text>
+<text selectable>长按我是可以被选中的\n</text>
+<text>Hello World\n</text>
+<text space="nbsp">Hello World\n</text>
+<text space="ensp">Hello World\n</text>
+<text space="emsp">Hello World\n</text>
+<text decode>5 &gt;3</text>
+
+<!-- button
+* size (mini/
+* type (default,primary,warn)
+* plain:镂空效果 (true/false)
+* disabled  (true/false)
+* loading   (true/false)
+* hover-class 设置点击后按钮样式
+ -->
+<button>按钮</button>
+<button size="mini">按钮</button>
+<button size="mini">按钮</button>
+<button size="mini" type="primary">按钮</button>
+<button size="mini" type="default">按钮</button>
+<button size="mini" type="warn">按钮</button>
+<button size="mini" type="primary" plain>按钮</button>
+<button size="mini" type="primary" plain disabled>按钮</button>
+<button size="mini" loading>按钮</button>
+<button hover-class="btn">按钮</button>
+
+<!-- view 
+  * 块级元素
+  * hover-class 设置点击后的样式
+  * hover-stay-time 点击后样式停留的时间 （值是数字类型）
+  * hover-stop-propagation 
+-->
+<view>我相当于是div元素</view>
+<view class="box2" hover-class="box2s">
+  <view class="box" hover-class="boxs" hover-stop-propagation>我相当于是div元素</view>
 </view>
+<!-- image
+* 行内块级元素
+* 可以是单标签，也可以是双标签
+* image有默认大小 320*240
+* bindload 监听图片加载完成的
+* lazy-load 图片懒加载
+* show-menu-by-longpress 长按识别图片二维码
+* mode:
+    - aspectFit
+    - aspectFill
+    - widthFix
+    - top/bottom/right/left
+ -->
+ <!-- 补充： 
+ * /开头 表示根目录 
+ * fn:function() {} 可以写成 fn() {}
+ * 对象中的方法 ：success:function() {} 可以写成 success: () => {} 
+ -->
+<image show-menu-by-longpress src="../../assets/img/1.png"/>
+<image src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg"/>
+<button bindtap="handleChooseAlbum">选择图片</button>
+<image src="{{imgPath}}"/>
+<image src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1585116077874&di=8dc704abcf0f0a06f125ed0a7b3a5f38&imgtype=0&src=http%3A%2F%2Fpics3.baidu.com%2Ffeed%2Fb8014a90f603738d402c05073cfde257f919ec9a.jpeg%3Ftoken%3D541599cac5c605cb95aecad7191113d8%26s%3D1B3E6884440268F94FBE61D20300809A" 
+bindload="handleImgLoad" lazy-load/>
+
+<!-- input
+* value 默认值
+* type （text/number/idcard/digit
+* password
+* placeholder
+* disabled
+* maxlength
+* comfirm-type
+* 绑定事件 bindinput,bindfocus,bindblur,bindconfirm
+ -->
+ <input />
+ <input password/>
+ <input placeholder="请输入文字"/>
+ <input bindblur="handleBlur" 
+ bindfocus="handleFocus" bindinput="handleInput"/>
+
