@@ -1,13 +1,80 @@
-<!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-  </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
-</view>
+<!-- 所有组件的共同属性
+ * id
+ * class
+ * style
+ * hidden 隐藏，但是实际存在
+ * data-xx 自定义属性，组件上触发事件时，会发送给处理函数
+ * bind*/catch* 绑定事件
+ -->
+<!-- scroll-view
+* 实现局部滚动： scroll-x / scroll-y
+* bindscroll 滚动时触发
+* bindscrolltoupper 滚动到top/left触发
+* bindscrolltolower 滚动到bottom/right触发
+ -->
+<scroll-view class="container1" scroll-x bindscrolltoupper="handleUpper">
+  <view wx:for="{{10}}" wx:key="*this" class="item1">哈{{index}}</view>
+</scroll-view>
+<scroll-view class="container2" scroll-y bindscroll="handleScroll" bindscrolltolower="handleLower">
+  <view wx:for="{{10}}" wx:key="*this" class="item2">{{index}}</view>
+</scroll-view>
+<view hidden>hhh</view>
+<!-- 样式
+* 行内样式
+* 页内样式 index.wxss
+* 全局样式 app.wxss
+* 权重：！import > style="" (1000)> id(100) >class (10) > 标签 （1）
+* rpx : 会自适应屏幕  （在iphone6上 1px =2rpx）
+ -->
+<!-- 页面中data中的数据name 
+ 使用:this.data.name
+ 改变name的值: this.setData({name:新的值})
+  -->
+<view class="box1">hh</view>
+<view class="box2">hh</view>
+<view>{{nowTime}}</view>
+<button bindtap="handleColor">点击切换box颜色</button>
+<view class="box {{isActive?'active':''}}">box</view>
+<!-- wx:if, wx:elif, wx:else 是否存在
+     hidden  是否显示隐藏
+     -->
+<view wx:if="{{isHave}}">0</view>
+<view wx:elif="{{!isHave}}">1</view>
+<view wx:else>2</view>
+<view wx:if="{{score>=90}}">优秀</view>
+<view wx:elif="{{score>=80}}">良好</view>
+<view wx:elif="{{score>59}}">及格</view>
+<view wx:else>不及格</view>
+<!-- wx:for
+* 遍历数组，数字，字符串
+* item起别名：wx:for-item="别名"
+* index起别名：wx:for-index="别名"
+* block标签是一个占位符，不会被渲染
+* wx:key="唯一值"   
+  — wx:key="*this" 普通数组/字符串/数字，*this表示循环项
+  - wx:key="id" 数组对象中每一项的唯一值id
+ -->
+ <view wx:for="krisWU" wx:key="*this">{{item}}--{{index}}</view>
+ <view wx:for="{{5}}" wx:key="*this">{{item}}--{{index}}</view>
+ <view wx:for="krisWU" wx:for-item="v" wx:for-index="i" wx:key="*this">{{v}}--{{i}}</view>
+ <view wx:for="{{list}}" wx:key="id">{{item.name}}</view>
+ <!-- template
+ * 可以是单标签，可以是双标签
+ * 模板最后都有名字 name="xx"，在未使用前，里面的内容是不会渲染出来的
+ * 使用： <template is="定义的名字" />
+ * 定义在单独文件中:1、引入 <import src="模板path"/> 2、使用：<template is="定义的名字" /> （不能嵌套引入）
+ *include
+   - <include src="header.wxml文件的path"/> 
+   - 复用公共的布局 
+   - 不能导入template/wxs ,可以嵌套引入
+  -->
+ <template name="temp">
+ <button>按钮</button>
+ <view>就哈哈哈</view>
+ <view>{{content}}</view>
+ </template>
+ <template is="temp" data="{{content:'我是模板中定义的数据'}}"/>
+<import src="/template/template.wxml"/>
+ <template is="common"/>
+ <include src="/template/header.wxml"/>
+

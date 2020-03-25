@@ -1,0 +1,35 @@
+<!-- wxs
+* 必须有 module="xxx"
+* 不能使用es6语法
+* module.exports={}
+* 使用 {{xxx.aa}}
+* 定义在单独的wxs文件中 使用：<wxs src="必须是wxs文件的相对路径" module="info"/>
+* 应用
+ -->
+<!-- <wxs module="info">
+  var msg = "hello world"
+  var sum = function(a, b) {
+    return a + b
+  }
+  function test(a,b){
+    return a - b
+  }
+  module.exports = {
+    msg: msg,
+    sum: sum,
+    test:test
+  }
+</wxs> -->
+<wxs src="../../wxs/info.wxs" module="info"/>
+<view>{{info.msg}}</view>
+<view>{{info.sum(10,6)}}</view>
+<view>{{info.test(10,6)}}</view>
+<!-- <view>{{3.99999.toFixed(2)}}</view>  在小程序中会报错-->
+
+<wxs src="../../wxs/format.wxs" module="format"/>
+<view>{{format.formatxs("3.821999")}}</view>
+<view>{{format.formatxs(3.821999)}}</view>
+<view>{{format.formatxs(3.821999,3)}}</view>
+<view>{{format.dateFormat(time,'yyyy-MM-dd ')}}</view>
+<view>{{format.dateFormat(time2,'yyyy-MM-dd hh:mm:ss')}}</view>
+
