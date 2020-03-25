@@ -1,13 +1,40 @@
 <!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-  </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+<!-- 事件
+* input有 bindinput,bindfocus,bindblur
+* scroll-view 有bindscrolltoupper,bindscrolltolower
+* 组件共有的事件
+  - bindtap 
+  - bindtouchstart
+  - bindtouchmove
+  - bindtouchcancel 手指触摸动作被打断
+  - bindtouchend
+  - bindlongpress
+  - bindlongtap
+* 事件传递参数
+  - 传递： data-key=value
+  - 获取： e.currentTarget.dataset.key
+* 事件冒泡
+ - currentTarget 触发事件的对象
+ - target 产生事件的对象  
+* 事件捕获
+ - capture-bind:tap="事件名"
+ - 注意bind 会一层层传递，catch 会阻止事件进一步传递 
+ -->
+<button bind:tap="handleBtn">按钮2</button>
+<button catchtap="handleBtn">按钮3</button>
+<view class="box" bindtouchstart="handleStart" bindtouchmove="handleMove" bindtouchend="handleEnd" bindlongpress="handleLong"></view>
+<button bindtap="handleBtnTap">按钮</button>
+
+<view class="outer" bindtap="handleOuter">
+  <view class="inner" bindtap="handleInner"></view>
+</view>
+<view class="cc">
+  <block wx:for="{{titles}}" wx:key="*this">
+    <view class="item" bindtap="handleItem" data-index="{{index}}" data-name="{{item}}">{{item}}</view>
+  </block>
+</view>
+<view class="view1" capture-bind:tap="handleCapture1" bindtap="handleView1">
+  <view class="view2"  capture-bind:tap="handleCapture2"  bindtap="handleView2">
+    <view class="view3"  capture-catch:tap="handleCapture3"  bindtap="handleView3"></view>
   </view>
 </view>

@@ -1,54 +1,58 @@
-//index.js
-//获取应用实例
-const app = getApp()
-
 Page({
   data: {
-    motto: 'Hello World',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    titles: ["衣服", "裤子", "帽子"]
   },
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
-  },
-  onLoad: function () {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
-      })
-    }
-  },
-  getUserInfo: function(e) {
+  handleBtn(e) {
     console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
-  }
+  },
+  handleStart() {
+    console.log('start')
+
+  },
+  handleMove() {
+    console.log('Move')
+
+  },
+  handleEnd() {
+    console.log('end')
+
+  },
+  handleLong() {
+    console.log('long')
+
+  },
+  handleBtnTap(e) {
+    console.log(e)
+  },
+  handleInner(e) {
+    console.log(e)
+  },
+  handleOuter(e) {
+    console.log(e)
+  },
+  handleItem(e) {
+    // console.log(e)
+    console.log(e.currentTarget.dataset.name)
+  },
+  // 事件捕获
+  handleCapture1(e) {
+    console.log("捕获1",e)
+  },
+  handleCapture2(e) {
+    console.log("捕获2",e)
+  },
+  handleCapture3(e) {
+    console.log("捕获3",e)
+  },
+
+  // 事件冒泡
+  handleView1(e) {
+    console.log("冒泡1",e)
+  },
+  handleView2(e) {
+    console.log("冒泡2",e)
+  },
+  handleView3(e) {
+    console.log("冒泡3",e)
+  },
 })
