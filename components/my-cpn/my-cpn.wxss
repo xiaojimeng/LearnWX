@@ -1,0 +1,4 @@
+/* components/my-cpn.wxss */
+.box{
+  background-color: rgba(255, 192, 203, 0.288);
+}

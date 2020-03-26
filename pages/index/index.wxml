@@ -1,0 +1,21 @@
+<!-- 组件
+ * 注册：使用页面.json文件中的usingComponents中定义 组件名:组件的路径 （也可以在app.json中全局注册）
+ * 使用： <定义的组件名>
+ * 父组件传值给子组件
+   - 子组件中properties 定义key:type值 或key:{type:type值,value:默认值}
+   - 父组件中key="value"
+ * 子组件传值给父组件
+   - 子组件中定义事件 
+   - this.triggerEvent('父组件中的自定义事件',{要传递给父组件的data},{其他选项(可有可无）}）
+   - 父组件中：bind:父组件中的自定义事件="事件A"
+   - 事件A(e） {console.log(e.detail.data)} 
+ * 传递样式
+   - 子组件的js文件中 externalClasser:['classname'] 注意：定义的classname不能有大写
+   - 父组件中 classname="value"
+   - 父组件的wxcss文件中定义 类名为value 类的样式
+
+ -->
+ 
+ <my-cpn title="我是传给子组件的值"> </my-cpn>
+ <my-cpn  titlecolor="red"  bind:increment="handleIncrement"> </my-cpn>
+<view>当前计数{{counter}}</view>

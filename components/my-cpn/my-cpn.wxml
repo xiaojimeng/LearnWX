@@ -1,0 +1,6 @@
+<!--components/my-cpn.wxml-->
+<view class="box">
+  我是自定义组件
+  <view class="titlecolor">{{title}}</view>
+  <button bindtap="handleTap">+1</button>
+</view>
