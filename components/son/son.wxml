@@ -1,0 +1,2 @@
+<!--components/son/son.wxml-->
+<view>子组件里面的数：{{n}}</view>

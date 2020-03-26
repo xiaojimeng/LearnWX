@@ -1,0 +1,16 @@
+<!--components/my-slots/my-slots.wxml-->
+<view>
+  <view>多个插槽的使用</view>
+  <view class="header">
+    <slot name="slot1"></slot>
+  </view>
+  11111
+  <view class="content">
+    <slot name="slot2"></slot>
+  </view>
+  2222
+  <view class="footer">
+    <slot name="slot2"></slot>
+  </view>
+
+</view>

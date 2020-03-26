@@ -1,0 +1,22 @@
+<tab-control list="{{list}}" bind:handleIndex="handleIndex" />
+<!-- 点击父组件中的按钮，修改子组中的数据
+* 父组件事件中 获取 子组件对象 const xx= this.selectCompont('id或者class') 
+* 修改： 子组件对象.setData({子组件中的数据key：newVal)  不太推荐
+* 修改：子组件duix.子组件中的方法
+* (子组件中的数据  xx.data.数据名)
+ -->
+<button bindtap="handleSon">修改组件内的数据</button>
+<son class="son" />
+<!-- 匿名插槽 -->
+<my-slot>
+  <button>按钮</button>
+</my-slot>
+<!-- 具名插槽 
+* 给slot起名 name="xx"
+* 子组件中的 .js文件中的options:{multipleSlots:true}
+* 使用 slot="xx"
+-->
+<my-slots>
+  <button slot="slot1">插入的按钮</button>
+
+</my-slots>
