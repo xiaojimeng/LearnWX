@@ -1,0 +1,35 @@
+<!-- 页面跳转 -->
+<!-- navigator 页面跳转
+* open-type:
+            navigator 默认值
+            redirect 关闭当前页，去往应用中除了tabbar页面的其他页面，不能返回
+            switchTab 跳转到tabBar页面，关闭其他非tabbar页面 （在tabBar中定义）
+            reLaunch  关闭所有页面，跳转到应用中的任一页面
+            navigateBack 返回   delta='n' 返回n个层级
+            exit
+*有参数传递的
+  传递参数：路径后面加?参数名=参数值&参数名=参数值...
+  获取参数：launch函数中有参数options 参数在options中
+* 返回页面时，改变出发页面的数据
+   onUnload: function() {
+    // 获取首页的页面对象
+    const pages = getCurrentPages()
+    const index=pages[pages.length-2]
+    // 调用页面对象setData
+    index.setData({
+      title:'啦啦啦'
+    })
+  },
+ -->
+<navigator url="/pages/detail/detail">跳转到详情页面</navigator>
+<navigator url="/pages/detail/detail" open-type="redirect">redirect跳转到详情页面</navigator>
+<navigator url="/pages/about/about" open-type="switchTab">switchTab跳转到关于页面</navigator>
+<!-- 跳转过程中的数据传递 -->
+<navigator url="/pages/detail/detail?name=why&age=18&height=1.88">有参数-跳转到详情页面</navigator>
+<view>{{title}}</view>
+
+<!-- wx的API跳转 
+* wx.navigateTo
+* redirectTo
+-->
+<button bindtap="handleDatail">跳转到详情</button>

@@ -1,7 +1,9 @@
 {
   "pages": [
-    "pages/index/index"
-  
+    "pages/index/index",
+    "pages/about/about",
+    "pages/detail/detail",
+        "pages/comment/comment"
   ],
   "window": {
     "backgroundTextStyle": "dark",
@@ -10,5 +12,17 @@
     "navigationBarTextStyle": "white"
   },
   "style": "v2",
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/about/about",
+        "text": "关于"
+      }
+    ]
+  }
 }
