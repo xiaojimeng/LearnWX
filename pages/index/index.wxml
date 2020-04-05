@@ -1,0 +1,14 @@
+<!-- 网络请求 -->
+<!-- 弹窗 
+* Toast
+* Modal
+* Loading
+* actionSheet
+-->
+<button bindtap="handleToast">showToast</button>
+<button bindtap="handleModal">showModal</button>
+<button bindtap="handleLoading">showLoading</button>
+<button bindtap="handleActionSheet">showActionSheet</button>
+<!-- 分享按钮 -->
+<button open-type="share">分享</button>
+
